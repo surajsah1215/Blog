@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Blog</string>
+
+    <string name="email">Email</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="loginn">Login</string>
+    <string name="accunt">Create Account</string>
+</resources>
