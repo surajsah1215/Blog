@@ -6,4 +6,13 @@
     <string name="login">login</string>
     <string name="loginn">Login</string>
     <string name="accunt">Create Account</string>
+    <string name="post_title">Post Title</string>
+    <string name="post_description">Post Description</string>
+    <string name="bold">bold</string>
+    <string name="description">Post Description here</string>
+    <string name="Date_created">Date created</string>
+    <string name="Todo">TODO</string>
+    <string name="post_titlee">Post Title</string>
+    <string name="Submit">SUBMIT</string>
+    <string name="TODO">todo</string>
 </resources>

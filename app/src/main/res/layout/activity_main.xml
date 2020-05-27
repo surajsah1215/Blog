@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activites.MainActivity">
 
     <EditText
         android:id="@+id/EmailId"
@@ -30,7 +30,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="480dp"
+        android:layout_marginBottom="356dp"
         android:background="@android:color/holo_red_light"
         android:text="@string/loginn"
         app:layout_constraintBottom_toBottomOf="parent"

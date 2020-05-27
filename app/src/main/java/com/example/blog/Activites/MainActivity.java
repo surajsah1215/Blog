@@ -1,8 +1,9 @@
-package com.example.blog;
+package com.example.blog.Activites;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -12,8 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.EOFException;
-
+import com.example.blog.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,10 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-import org.w3c.dom.Text;
-
-
-    public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
         private FirebaseAuth mAuth;
         private FirebaseAuth.AuthStateListener mAuthlistner;
         private FirebaseUser mUser;
@@ -52,6 +49,10 @@ import org.w3c.dom.Text;
                     if (mUser != null) {
                         Toast.makeText(MainActivity.this, "User signed in", Toast.LENGTH_LONG)
                                 .show();
+                        startActivity(new Intent(MainActivity.this,postlistActivity.class));
+
+                        finish();
+
                     } else {
                         Toast.makeText(MainActivity.this, "User signed Out", Toast.LENGTH_LONG)
                                 .show();
@@ -65,7 +66,7 @@ import org.w3c.dom.Text;
                 @Override
                 public void onClick(View view) {
                     if (!TextUtils.isEmpty(emailField.getText().toString())
-                            && !TextUtils.isEmpty(passwordField.getText().toString())) ;
+                            && !TextUtils.isEmpty(passwordField.getText().toString()))
                     {
 
                         String email = emailField.getText().toString();
@@ -87,6 +88,8 @@ import org.w3c.dom.Text;
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(MainActivity.this, "Signed in", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(MainActivity.this, postlistActivity.class));
+                                finish();
                                 } else {
                                     //not yet
                                 }
@@ -101,6 +104,10 @@ import org.w3c.dom.Text;
 
         @Override
         public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+            if (item.getItemId() == R.id.action_signout){
+                mAuth.signOut();
+            }
             return super.onOptionsItemSelected(item);
         }
 
