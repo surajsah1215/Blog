@@ -1,5 +1,6 @@
 package com.example.blog.Data;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.Image;
 import android.provider.ContactsContract;
@@ -69,6 +70,7 @@ public class BolgRecyclerviewAdatapter extends RecyclerView.Adapter<BolgRecycler
         public ImageView image;
         String userid;
 
+        @SuppressLint("WrongViewCast")
         public ViewHolder(View view, Context ctx){
             super(view);
             context = ctx;

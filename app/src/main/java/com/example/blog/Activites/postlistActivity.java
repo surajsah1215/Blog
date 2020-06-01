@@ -51,6 +51,7 @@ public class postlistActivity extends AppCompatActivity {
 
                 }
                 break;
+
             case R.id.action_signout:
                 if(mUser !=null && mAuth !=null){
                     mAuth.signOut();

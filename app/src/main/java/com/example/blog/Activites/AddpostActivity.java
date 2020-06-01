@@ -5,6 +5,7 @@ package com.example.blog.Activites;
         import androidx.annotation.Nullable;
         import androidx.appcompat.app.AppCompatActivity;
 
+        import android.annotation.SuppressLint;
         import android.app.ProgressDialog;
         import android.content.Intent;
         import android.net.Uri;
@@ -42,6 +43,7 @@ public class AddpostActivity extends AppCompatActivity {
     private static final int Gallery_Code = 1;
 
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class AddpostActivity extends AppCompatActivity {
 
         mpostdatabase = FirebaseDatabase.getInstance().getReference().child("Mlog");
 
-        mpostImage = (ImageButton)findViewById(R.id.imageView);
+        mpostImage = (ImageButton)findViewById(R.id.imageButton);
         mPostTitle = (EditText)findViewById(R.id.editText);
         mpostDesc = (EditText) findViewById(R.id.editText2);
         mSubmitButton = (Button)findViewById(R.id.button);
