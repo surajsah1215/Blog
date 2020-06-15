@@ -5,16 +5,17 @@ public class Bolg {
     private String desc;
     private String image;
     private String timestmap;
+    private String UserId;
 
 
-    public Bolg(String title, String description, String imageurl, String timestamp, String user) {
-    }
+   public Bolg (){}
 
-    public Bolg(String title, String desc, String image, String timestmap) {
+    public Bolg(String title, String desc, String image, String timestmap , String UserId) {
         Title = title;
         this.desc = desc;
         this.image = image;
         this.timestmap = timestmap;
+        this.UserId = UserId;
     }
 
     public String getTitle() {
@@ -45,7 +46,17 @@ public class Bolg {
         return timestmap;
     }
 
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId) {
+        UserId = userId;
+    }
+
     public void setTimestmap(String timestmap) {
         this.timestmap = timestmap;
+
+
     }
 }

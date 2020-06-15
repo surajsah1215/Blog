@@ -42,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
             emailField = (EditText) findViewById(R.id.EmailId);
             passwordField = (EditText) findViewById(R.id.passwordID);
 
+            createAccunt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, CreateAccount.class));
+                    finish();
+                }
+            });
+
             mAuthlistner = new FirebaseAuth.AuthStateListener() {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -101,21 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
         
 
-
-        @Override
-        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-            if (item.getItemId() == R.id.action_signout){
-                mAuth.signOut();
-            }
-            return super.onOptionsItemSelected(item);
-        }
-
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.main_menu, menu);
-            return super.onCreateOptionsMenu(menu);
-        }
 
         @Override
         protected void onStart() {

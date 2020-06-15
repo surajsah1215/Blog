@@ -15,4 +15,7 @@
     <string name="post_titlee">Post Title</string>
     <string name="Submit">SUBMIT</string>
     <string name="TODO">todo</string>
+    <string name="name">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="createAccount">CreateAccount</string>
 </resources>

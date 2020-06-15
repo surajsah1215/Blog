@@ -15,15 +15,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blog.Model.Bolg;
 import com.example.blog.R;
+import com.squareup.picasso.Picasso;
 
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class BolgRecyclerviewAdatapter extends RecyclerView.Adapter<BolgRecyclerviewAdatapter.ViewHolder> {
+public class BolgRecyclerAdatapter extends RecyclerView.Adapter<BolgRecyclerAdatapter.ViewHolder> {
    public Context context;
    public List<Bolg> Bloglist;
 
-    public BolgRecyclerviewAdatapter(Context context, List<Bolg> bloglist) {
+    public BolgRecyclerAdatapter(Context context, List<Bolg> bloglist) {
         this.context = context;
         this.Bloglist = bloglist;
     }
@@ -41,18 +47,23 @@ public class BolgRecyclerviewAdatapter extends RecyclerView.Adapter<BolgRecycler
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Bolg bolg = Bloglist.get(position);
-        String imageurl = null;
+        String imageurl = bolg.getImage();
 
         holder.title.setText(bolg.getTitle());
         holder.desc.setText(bolg.getDesc());
+
+
+
         holder.timestamp.setText(bolg.getTimestmap());
 
-        java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
-        String formatedDaate = dateFormat.format(new Date(Long.valueOf(bolg.getTimestmap())).getTime());
 
-        holder.timestamp.setText(formatedDaate);
 
-        imageurl = bolg.getImage();
+
+        Picasso.get()
+                .load(imageurl)
+                .into(holder.image);
+
+
     }
 
     @Override
@@ -70,15 +81,14 @@ public class BolgRecyclerviewAdatapter extends RecyclerView.Adapter<BolgRecycler
         public ImageView image;
         String userid;
 
-        @SuppressLint("WrongViewCast")
         public ViewHolder(View view, Context ctx){
             super(view);
             context = ctx;
 
             title = (TextView) view.findViewById(R.id.postTitleList);
             desc = (TextView) view.findViewById(R.id.postTextList);
-            timestamp = (TextView) view.findViewById(R.id.postImageList);
-            image = (ImageView) view.findViewById(R.id.timestampList);
+            timestamp = (TextView) view.findViewById(R.id.timestampList);
+            image = (ImageView) view.findViewById(R.id.postImageList);
 
             userid = null;
 

@@ -8,8 +8,10 @@ package com.example.blog.Activites;
         import android.annotation.SuppressLint;
         import android.app.ProgressDialog;
         import android.content.Intent;
+        import android.icu.text.CaseMap;
         import android.net.Uri;
         import android.os.Bundle;
+        import android.os.storage.StorageManager;
         import android.text.TextUtils;
         import android.view.Menu;
         import android.view.MenuItem;
@@ -24,10 +26,18 @@ package com.example.blog.Activites;
         import com.example.blog.Model.Bolg;
         import com.example.blog.R;
         import com.google.android.gms.tasks.OnSuccessListener;
+        import com.google.android.gms.tasks.Task;
         import com.google.firebase.auth.FirebaseAuth;
         import com.google.firebase.auth.FirebaseUser;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
+        import com.google.firebase.storage.FirebaseStorage;
+        import com.google.firebase.storage.StorageReference;
+        import com.google.firebase.storage.UploadTask;
+
+        import java.util.HashMap;
+        import java.util.Map;
+        import java.util.concurrent.ScheduledExecutorService;
 
 public class AddpostActivity extends AppCompatActivity {
 
@@ -36,9 +46,10 @@ public class AddpostActivity extends AppCompatActivity {
     private EditText mpostDesc;
     private Button mSubmitButton;
     private DatabaseReference mpostdatabase;
+    private StorageReference mStorage;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
-    private ProgressDialog mprogress;
+    public ProgressDialog mprogress;
     private Uri mImageUri;
     private static final int Gallery_Code = 1;
 
@@ -50,8 +61,11 @@ public class AddpostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addpost);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+        mStorage = FirebaseStorage.getInstance().getReference();
 
         mpostdatabase = FirebaseDatabase.getInstance().getReference().child("Mlog");
+
+        mprogress = new ProgressDialog(this);
 
         mpostImage = (ImageButton)findViewById(R.id.imageButton);
         mPostTitle = (EditText)findViewById(R.id.editText);
@@ -90,27 +104,45 @@ public class AddpostActivity extends AppCompatActivity {
     }
 
     private void startposting() {
-        mprogress.setMessage("posting to blog");
-        mprogress.show();
 
 
-        String titleval = mPostTitle.getText().toString().trim();
-        String descval = mpostDesc.getText().toString().trim();
+        final String titleval = mPostTitle.getText().toString().trim();
+        final String descval = mpostDesc.getText().toString().trim();
 
-        if (!TextUtils.isEmpty(titleval) &&  !TextUtils.isEmpty(descval)){
+        if (!TextUtils.isEmpty(titleval) &&  !TextUtils.isEmpty(descval)
+          && mImageUri != null){
             //start uploading
+            mprogress.setMessage("posting");
+            mprogress.show();
 
-            Bolg bolg = new Bolg("Title","description","imageurl"
-                    ,"timestamp", "userid");
+            StorageReference filepath = mStorage.child("MBlog_images")
+                    .child(mImageUri.getLastPathSegment());
 
-            mpostdatabase.setValue(bolg).addOnSuccessListener(new OnSuccessListener<Void>() {
+            filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onSuccess(Void aVoid) {
-                    Toast.makeText(getApplicationContext(),"Item added"
-                            ,Toast.LENGTH_LONG).show();
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Task<Uri> downloadurl = taskSnapshot.getStorage().getDownloadUrl();
+
+                    DatabaseReference newPost = mpostdatabase.push();
+
+                    Map<String, String> dataTosave = new HashMap<>();
+                    dataTosave.put("Title", titleval);
+                    dataTosave.put("desc", descval);
+                    dataTosave.put("Images",downloadurl.toString());
+                    dataTosave.put("TimeStamp",String.valueOf(System.currentTimeMillis()));
+                    dataTosave.put("UserId",mUser.getUid());
+
+                    newPost.setValue(dataTosave);
+
                     mprogress.dismiss();
+
+                    startActivity(new Intent(AddpostActivity.this, postlistActivity.class));
+                    finish();
                 }
             });
+
+
+
         }
 
 
