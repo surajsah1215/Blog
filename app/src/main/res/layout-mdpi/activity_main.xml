@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/createAccID"
-        android:layout_width="392dp"
-        android:layout_height="55dp"
+        android:layout_width="316dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="92dp"
@@ -39,8 +39,8 @@
 
     <EditText
         android:id="@+id/EmailId"
-        android:layout_width="311dp"
-        android:layout_height="51dp"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -62,8 +62,8 @@
 
     <EditText
         android:id="@+id/passwordID"
-        android:layout_width="315dp"
-        android:layout_height="46dp"
+        android:layout_width="358dp"
+        android:layout_height="47dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -76,9 +76,9 @@
         android:textColorHint="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintBottom_toBottomOf="@+id/signIN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmailId"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.101" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

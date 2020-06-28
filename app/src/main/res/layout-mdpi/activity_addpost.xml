@@ -13,7 +13,7 @@
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="176dp"
+        android:layout_marginBottom="156dp"
         android:autofillHints=""
         android:background="@drawable/input_outline"
         android:ems="10"
@@ -60,13 +60,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.645" />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="401dp"
-        android:layout_height="327dp"
+        android:layout_width="311dp"
+        android:layout_height="196dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"

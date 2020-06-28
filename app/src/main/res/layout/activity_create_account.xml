@@ -69,7 +69,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="160dp"
-        android:background="@drawable/rectan"
+        android:background="@drawable/rectaangle"
         android:text="@string/createAccount"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

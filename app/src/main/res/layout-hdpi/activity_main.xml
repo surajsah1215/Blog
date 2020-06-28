@@ -9,18 +9,18 @@
 
     <Button
         android:id="@+id/createAccID"
-        android:layout_width="392dp"
-        android:layout_height="55dp"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/rectaangle"
         android:text="@string/accunt"
         android:textColor="#FAF2F2"
         android:textColorHint="#00F0F1F0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -29,18 +29,19 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="160dp"
         android:background="@drawable/rectaangle"
         android:text="@string/loginn"
         android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/EmailId"
-        android:layout_width="311dp"
-        android:layout_height="51dp"
+        android:layout_width="254dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -62,8 +63,8 @@
 
     <EditText
         android:id="@+id/passwordID"
-        android:layout_width="315dp"
-        android:layout_height="46dp"
+        android:layout_width="248dp"
+        android:layout_height="34dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
